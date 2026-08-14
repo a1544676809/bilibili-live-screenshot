@@ -1,6 +1,6 @@
 <template>
-  <div class="live-screenshot-container">
-    <transition-group class="live-screenshot-list" name="live-screenshot-list" tag="div">
+  <div class="video-screenshot-container">
+    <transition-group class="video-screenshot-list" name="video-screenshot-list" tag="div">
       <VideoScreenshot
         v-for="screenshot of screenshots"
         :key="screenshot.id"
@@ -8,7 +8,7 @@
         @discard="discard(screenshot)"
       ></VideoScreenshot>
     </transition-group>
-    <div v-show="showBatch" class="live-screenshot-batch">
+    <div v-show="showBatch" class="video-screenshot-batch">
       <button @click="saveAll"><VIcon :size="18" icon="mdi-content-save"></VIcon>全部保存</button>
       <button @click="discardAll">
         <VIcon :size="18" icon="mdi-delete-forever"></VIcon>全部丢弃
@@ -61,7 +61,9 @@ export default Vue.extend({
 })
 </script>
 <style lang="scss">
-.live-screenshot-container {
+@import 'common';
+
+.video-screenshot-container {
   position: relative;
   --screenshot-width: 240px;
   --screenshot-width-negative: calc(0px - var(--screenshot-width));
@@ -69,18 +71,16 @@ export default Vue.extend({
   --thumbnail-margin-vertical: 12px;
   --thumbnail-margin-horizontal: 12px;
   --screenshot-list-width: calc(2 * var(--thumbnail-margin-horizontal) + var(--screenshot-width));
-  body.be-live-screenshot-disabled & {
+  .video-screenshot-disable & {
     display: none;
   }
-  .live-screenshot-batch {
+  .video-screenshot-batch {
     position: fixed;
     bottom: var(--thumbnail-margin-vertical);
     right: var(--thumbnail-margin-horizontal);
     z-index: 20000;
     width: var(--screenshot-list-width);
-    display: flex;
-    align-items: center;
-    gap: 16px;
+    @include h-center(16px);
     justify-content: space-between;
 
     button {
@@ -92,9 +92,7 @@ export default Vue.extend({
       cursor: pointer;
       outline: 0 !important;
       padding: 8px 12px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
+      @include h-center(8px);
       justify-content: center;
       flex-grow: 1;
       .be-icon {
@@ -102,7 +100,7 @@ export default Vue.extend({
       }
     }
   }
-  .live-screenshot-list {
+  .video-screenshot-list {
     position: fixed;
     top: 0;
     right: 0;
@@ -112,14 +110,8 @@ export default Vue.extend({
     width: var(--screenshot-list-width);
     background-color: #000c;
     border-radius: 8px;
-    overflow: auto;
-    scrollbar-width: none !important;
-    overscroll-behavior: contain;
+    @include no-scrollbar();
 
-    &::-webkit-scrollbar {
-      height: 0 !important;
-      width: 0 !important;
-    }
     > * {
       pointer-events: initial;
     }

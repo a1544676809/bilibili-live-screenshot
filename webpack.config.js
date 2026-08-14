@@ -104,10 +104,28 @@ module.exports = {
         oneOf: [
           {
             resourceQuery: /vue/,
-            use: ['to-string-loader', 'css-loader', 'fast-sass-loader'],
+            use: [
+              'style-loader',
+              'css-loader',
+              {
+                loader: 'fast-sass-loader',
+                options: {
+                  includePaths: [relativePath('scss')],
+                },
+              },
+            ],
           },
           {
-            use: ['to-string-loader', 'css-loader', 'fast-sass-loader'],
+            use: [
+              'to-string-loader',
+              'css-loader',
+              {
+                loader: 'fast-sass-loader',
+                options: {
+                  includePaths: [relativePath('scss')],
+                },
+              },
+            ],
           },
         ],
         include: [relativePath('registry')],
