@@ -26,8 +26,9 @@ module.exports = {
       const regexMatch = (regex, base) => {
         const match = request.match(regex)
         if (match) {
+          const camelCase = name => name.replace(/-([a-z])/g, (_, c) => c.toUpperCase())
           const subModules = match[1]
-            ? match[1].split('/').map(name => name.replace(/\.vue$/, ''))
+            ? match[1].split('/').map(name => (name.match(/\.vue$/) ? name.replace(/\.vue$/, '') : camelCase(name)))
             : []
           return () => callback(null, ['coreApis', ...base, ...subModules], 'root')
         }

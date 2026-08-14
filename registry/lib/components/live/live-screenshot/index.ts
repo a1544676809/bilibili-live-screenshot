@@ -70,7 +70,7 @@ const startInserting = () => {
   waitForControlBar({
     callback: ensureButton,
   })
-  insertTimer = window.setInterval(tryInsertButton, 2000)
+  insertTimer = window.setInterval(tryInsertButton, 500)
 }
 
 const stopInserting = () => {
