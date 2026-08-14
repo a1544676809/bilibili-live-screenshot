@@ -1,0 +1,29 @@
+{
+  "name": "bilibili-live-screenshot",
+  "version": "1.0.0",
+  "description": "Bilibili-Evolved 直播页截图组件: 在直播间播放器控制栏添加截图按钮",
+  "license": "GPL-3.0",
+  "scripts": {
+    "build": "webpack --config webpack.config.js",
+    "type-check": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@babel/core": "7.22.10",
+    "@babel/plugin-proposal-class-properties": "^7.18.6",
+    "@babel/preset-env": "^7.22.10",
+    "@babel/preset-typescript": "^7.22.10",
+    "babel-loader": "^9.1.3",
+    "css-loader": "^5.0.0",
+    "fast-sass-loader": "^2.0.0",
+    "sass": "1.25.0",
+    "style-loader": "^2.0.0",
+    "terser-webpack-plugin": "^5.3.8",
+    "to-string-loader": "^1.2.0",
+    "typescript": "5.8.3",
+    "vue": "2.7.14",
+    "vue-loader": "^15.10.1",
+    "vue-template-compiler": "2.7.14",
+    "webpack": "^5.97.1",
+    "webpack-cli": "^4.6.0"
+  }
+}

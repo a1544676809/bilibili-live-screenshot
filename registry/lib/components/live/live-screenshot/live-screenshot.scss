@@ -1,0 +1,20 @@
+.be-live-screenshot-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  margin: 0 4px;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+
+  svg {
+    width: 18px;
+    height: 18px;
+  }
+  &:hover {
+    background-color: #ffffff2e;
+  }
+}
